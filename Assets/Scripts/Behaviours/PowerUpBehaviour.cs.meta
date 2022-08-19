@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: d674eb475af107d42aa38462343a547d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - circleBehaviour: {instanceID: 0}
+  - gameController: {instanceID: 0}
+  - powerUpController: {instanceID: 0}
+  - slowMotion: {fileID: 1987713326912096847, guid: c27940160baaed04293435be572dacb3, type: 3}
+  - invincible: {fileID: 3269951297688048188, guid: 523c1ba445af3884eb416bb102a4b859, type: 3}
+  - easier: {fileID: 4603170779493696939, guid: 34f79cecacf2f26448230c2c997cf658, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

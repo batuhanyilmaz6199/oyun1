@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class TouchController : MonoBehaviour
 {
-    [SerializeField] private int startingRotationSpeed = 50;
-    [SerializeField] private int currentRotationSpeed;
-    [SerializeField] private int score = 0;
-    [SerializeField] private GameObject pivotObject;
-
     [SerializeField] private GameController gameController;
 
     // Start is called before the first frame update
