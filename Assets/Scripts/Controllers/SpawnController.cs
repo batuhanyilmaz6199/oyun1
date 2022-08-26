@@ -14,10 +14,10 @@ public class SpawnController : MonoBehaviour
     public int spawnedCircleCount;
     private int startingCirclePartCount = 8;
     private int startingStepCount;
-    private int totalStepCount = 160;
+    private int totalStepCount = 500;
     public int currentDifficulty;
     public int currentDifficultyMultiplier = 2;
-    private int startingDifficulty = 1;
+    private int startingDifficulty = 3;
     private int startingSpeed = 50;
     private Color colour;
     [SerializeField] private CharacterBehaviour characterBehaviour;
@@ -53,22 +53,22 @@ public class SpawnController : MonoBehaviour
         {
 
 
-            currentDifficulty = startingDifficulty + spawnedCircleCount / 10;
+            currentDifficulty = 1;
 
 
             GameObject circleObject = Instantiate(circlePrefab, circleContainerTransform);
 
             int direction = -1;
             if (i % 2 == 1) direction = 1;
-            
+
 
             spawnedCircleCount++;
 
             int currentPartCount = startingCirclePartCount + spawnedCircleCount / 3;
             int currentStepCount = totalStepCount / currentPartCount + 1;
             float currentSpeed = direction * (((linearSpeed / recentSpawnRadius)) + currentDifficulty * 10 * currentDifficultyMultiplier);
-            
-            
+
+
             circleObject.GetComponent<CircleBehaviour>().Initialize(recentSpawnRadius, currentPartCount, currentStepCount, pivotObject, currentSpeed, currentDifficulty * currentDifficultyMultiplier, Color.green, gameController);
 
             recentSpawnRadius += spaceBetweenCircles;
@@ -116,7 +116,7 @@ public class SpawnController : MonoBehaviour
 
             int direction = -1;
             if (spawnedCircleCount % 2 == 1) direction = 1;
-            float currentSpeed = direction * (((linearSpeed / recentSpawnRadius) ) + currentDifficulty * 10 * currentDifficultyMultiplier);
+            float currentSpeed = direction * (((linearSpeed / recentSpawnRadius)) + currentDifficulty * 10 * currentDifficultyMultiplier);
 
             int currentPartCount = startingCirclePartCount + spawnedCircleCount / 5;
             int currentStepCount = totalStepCount / currentPartCount + 1;
@@ -136,11 +136,27 @@ public class SpawnController : MonoBehaviour
     }
     public void SpawnPowerUp()
     {
+
         bool containsPowerUp = false;
-        int random = Random.Range(1, 10), random1 = Random.Range(1, 10);
-        if (random == random1)
+        int random, random1;
+        
+        if (!gameController.isPowerVacuumOn)
         {
-            containsPowerUp = true;
+            random = Random.Range(1, 10);
+            random1 = Random.Range(1, 10);
+            if (random == random1)
+            {
+                containsPowerUp = true;
+            }
+        }
+        else
+        {
+            random = Random.Range(1, 2); 
+            random1 = Random.Range(1, 2);
+            if (random == random1)
+            {
+                containsPowerUp = true;
+            }
         }
 
 
@@ -165,7 +181,7 @@ public class SpawnController : MonoBehaviour
                 PowerUpBehaviour powerUpBehaviour = Instantiate(invincible, new Vector3(0, currentCircleBehaviour.radius, 0), Quaternion.Euler(Vector3.zero), currentCircle).GetComponent<PowerUpBehaviour>();
                 powerUpBehaviour.powerUpController = powerUpController;
             }
-            if(random == 3)
+            if (random == 3)
             {
                 PowerUpBehaviour powerUpBehaviour = Instantiate(easier, new Vector3(0, currentCircleBehaviour.radius, 0), Quaternion.Euler(Vector3.zero), currentCircle).GetComponent<PowerUpBehaviour>();
                 powerUpBehaviour.powerUpController = powerUpController;

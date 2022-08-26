@@ -17,6 +17,7 @@ public class CharacterBehaviour : MonoBehaviour
             transform.SetParent(nextCircle);
 
 
+
         }
     }
 
@@ -36,6 +37,7 @@ public class CharacterBehaviour : MonoBehaviour
             {
                 OnJumpToGap();
             }
+
         }
 
         Debug.Log("hit3");

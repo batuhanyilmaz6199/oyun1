@@ -44,9 +44,10 @@ public class CirclePartBehaviour : MonoBehaviour
             Vector3 currentPosition = new Vector3(x, y, 0);
             lineRenderer.SetPosition(i, currentPosition);
 
-            lineRenderer.material.color = colour;
-            lineRenderer.material.shader = Shader.Find("Unlit/Color");
+
         }
+        lineRenderer.material.color = colour;
+        lineRenderer.material.shader = Shader.Find("Unlit/Color");
 
 
 
@@ -78,7 +79,7 @@ public class CirclePartBehaviour : MonoBehaviour
             Debug.Log("renk1");
         }
     }
-    
+
 
     public void ChangeCirclePartColor(Color color)
     {
